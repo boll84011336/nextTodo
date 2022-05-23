@@ -14,3 +14,26 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.add {
+  background-image:url('../img/insert.png');
+  width:24px;
+  height:24px;
+  margin-left: 8px;
+  background-color: #8DC8FF;
+  border-color: #ccc;
+}
+
+.delete {
+  background-image:url('../img/trash.jpg');
+  width:28px;
+  height:28px;
+  margin-left: 8px;
+  background-color: #8DC8FF;
+  border-color: #ccc;
+}
+
+.load {
+  background-color: black;
+  margin: 0 auto;
+}
