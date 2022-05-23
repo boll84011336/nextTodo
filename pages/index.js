@@ -53,7 +53,7 @@ const Loading = styled.div`
 
 export default function Home() {
   // const [todos, setTodos] = useState([1])
-  const [todos, setTodos] = useState([{id:1,content:'abc'}]);
+  const [todos, setTodos] = useState([{id:1, content:'abc', complete: false}]);
   const [value, setValue] = useState('')
   const [done, setDone] = useState(undefined);
   const id = useRef(2)
@@ -74,7 +74,8 @@ export default function Home() {
     delay(2).then(() => {
       setTodos([...todos, {
         id:id.current,
-        content:value
+        content:value,
+        complete: false
       }])     
       id.current++
       setDone(false);
@@ -89,6 +90,16 @@ export default function Home() {
     })   
   }
 
+  //編輯
+  const handleCheckChange = id => {
+    const newTodoList = todos.map(todo => {
+      if(todo.id === id)
+      return {...todo, complete:!todo.complete}
+      return todo
+    })
+    setTodos(newTodoList)
+  }
+
   return(
     <div>
       <Layout/>
@@ -98,9 +109,9 @@ export default function Home() {
              done ? <ReactLoading className='load' type={"spin"} color="#fff" height={50} width={50} />
              :            
             todos.map(todo => (
-              <><TodoItem key={todo.id} todo={todo} handleDeleteTodo={handleDeleteTodo} /></>
+              <><TodoItem key={todo.id} todo={todo} handleDeleteTodo={handleDeleteTodo} handleCheckChange={handleCheckChange} /></>
             ))            
-          }   
+          }
         <InsertBlock>
           <input type="text" size="102" placeholder="todo" value={value} onChange={handleInputChange}/>
           <input type="button" className='add' onClick={handleButtonClick}></input>

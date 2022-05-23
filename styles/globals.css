@@ -37,3 +37,17 @@ a {
   background-color: black;
   margin: 0 auto;
 }
+
+.blue {
+  color: #8DC8FF;
+  text-decoration: line-through;
+}
+
+.black {
+  color: black;
+}
+
+.checkbox{
+  width: 20px;
+  height: 20px;
+}

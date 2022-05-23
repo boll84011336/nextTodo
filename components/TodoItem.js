@@ -3,6 +3,7 @@ import styled from "styled-components";
 import trash from '../img/trash.jpg';
 import Skeleton from 'react-loading-skeleton';
 import ReactLoading from 'react-loading';
+import React, { useState, useRef, useEffect } from 'react';
 
 
 const TodoBlock = styled.div`
@@ -16,6 +17,7 @@ const TodoBlock = styled.div`
 
 const TodoContent = styled.div`
   padding:4px;
+  font-size:24px;
 `
 
 const TodoButtonWrapper = styled.div`
@@ -35,12 +37,14 @@ const RedButton = styled(Button)`
 color:red;
 `
 
-export default function TodoItem({todo, handleDeleteTodo}) {
-  console.log(trash)
+export default function TodoItem({todo, handleDeleteTodo, handleCheckChange}) {  
   return ( 
     <TodoBlock>
        {/* TodoContent 這是一條todo item */}
-        <TodoContent>{todo.content}</TodoContent>
+       <input type="checkbox" className="checkbox" checked={todo.complete} onChange={()=> handleCheckChange(todo.id)}/>
+       { todo.complete ? <TodoContent className="blue">{todo.content}</TodoContent> : 
+        <TodoContent className="black">{todo.content}</TodoContent> 
+       }
         <TodoButtonWrapper>
           <RedButton className='delete' onClick={() => {handleDeleteTodo(todo.id)}}></RedButton>
         </TodoButtonWrapper>     
