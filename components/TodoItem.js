@@ -17,7 +17,7 @@ const TodoBlock = styled.div`
 
 const TodoContent = styled.div`
   padding:4px;
-  font-size:24px;
+  font-size:20px;
 `
 
 const TodoButtonWrapper = styled.div`
